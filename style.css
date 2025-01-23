@@ -20,6 +20,26 @@ body{
     box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.2);
 }
 
+input{
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(82, 82, 82);
+    margin-bottom: 20px;
+}
+
+button{
+    padding: 10px;
+    border-radius: 5px;
+    border: 2px solid rgb(82, 82, 82);
+    background-color: rgb(255, 255, 255);
+    color: rgb(82, 82, 82);
+    cursor: pointer;
+}
+button:hover{
+    background-color: rgb(82, 82, 82);
+    color: white;
+}
+
 #weatherCard h1{
     font-size: 40px;;
     text-decoration: underline rgb(39, 39, 39);
