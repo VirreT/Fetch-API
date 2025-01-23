@@ -2,7 +2,7 @@
 const API_URL = "https://api.met.no/weatherapi/locationforecast/2.0/compact";
 const HEADERS = {
   headers: {
-    "User-Agent": "YourAppName/1.0 (your_email@example.com)"
+    "User-Agent": "https://github.com/VirreT/Fetch-API (viktor.tylus@skola.botkyrka.se)"
   }
 };
 
