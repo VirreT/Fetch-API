@@ -25,8 +25,8 @@ function displayWeather(data) {
   
       function getWeatherIcon(symbolCode) {
         const weatherIcons = {
-          clear_day: "☀️",
-          clear_night: "🌙",
+          clearsky_day: "☀️",
+          clearsky_night: "🌙",
           partly_cloudy_day: "🌤️",
           partly_cloudy_night: "🌙☁️",
           cloudy: "🌥️",
@@ -46,8 +46,8 @@ function displayWeather(data) {
 
       function getWeatherDescription(symbolCode) {
         const weatherDescriptions = {
-          clear_day: "Clear sky",
-          clear_night: "Clear sky",
+          clearsky_day: "Clear sky",
+          clearsky_night: "Clear sky",
           partly_cloudy_day: "Partly cloudy",
           partly_cloudy_night: "Partly cloudy",
           cloudy: "Cloudy",
@@ -68,6 +68,8 @@ function displayWeather(data) {
       const nextHourForecast = timeseries[0].data.next_1_hours?.summary?.symbol_code || "N/A";
       const weatherIcon = getWeatherIcon(nextHourForecast);
       const weatherDescription = getWeatherDescription(nextHourForecast);
+
+      console.log(nextHourForecast);
   
       weatherDiv.innerHTML = `
         <p id="weatherIcon">${weatherIcon}</p>
@@ -80,4 +82,13 @@ function displayWeather(data) {
     }
   }
 
-fetchWeather(59.19, 17.83);
+  function getWeather() {
+    var lat = document.getElementById("latitude").value;
+    var lon = document.getElementById("longitude").value;
+    var coordinates= document.getElementById("coordinates");
+
+    fetchWeather(lat, lon);
+    coordinates.innerHTML = `Latitude: ${lat} Longitude: ${lon}`;
+  }
+
+fetchWeather(59, 19);
