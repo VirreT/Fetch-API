@@ -88,7 +88,7 @@ function displayWeather(data) {
     var coordinates= document.getElementById("coordinates");
 
     fetchWeather(lat, lon);
-    coordinates.innerHTML = `Latitude: ${lat} Longitude: ${lon}`;
+    coordinates.innerHTML = `<strong>${lat}°N ${lon}°W</strong>`;
   }
 
-fetchWeather(59, 19);
+getWeather();
