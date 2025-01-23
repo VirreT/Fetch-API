@@ -1,0 +1,40 @@
+body{
+    background-color: rgb(207, 232, 252);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+#weatherCard{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    color: rgb(82, 82, 82);
+    font-family: Arial, Helvetica, sans-serif;
+    margin-top: 100px;
+    margin-bottom: 200px;
+    max-width: 45%;
+    background-color: white;
+    padding: 50px;
+    border-radius: 10px;
+    box-shadow: 10px 10px 10px 10px rgba(0, 0, 0, 0.1);
+}
+
+#weatherCard h1{
+    font-size: 40px;;
+    text-decoration: underline rgb(39, 39, 39);
+}
+#weatherIcon{
+    font-size: 50px;
+    margin-top: 0px;
+    margin-bottom: 20px;
+}
+
+#weather{
+    font-size: 30px;
+    margin-bottom: 20px;
+}
+
+#temp{
+    font-size: 30px;
+    font-weight: 100;
+}

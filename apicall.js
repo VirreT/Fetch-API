@@ -1,11 +1,9 @@
-
 const API_URL = "https://api.met.no/weatherapi/locationforecast/2.0/compact";
 const HEADERS = {
   headers: {
     "User-Agent": "https://github.com/VirreT/Fetch-API (viktor.tylus@skola.botkyrka.se)"
   }
 };
-
 
 async function fetchWeather(lat, lon) {
   try {
@@ -18,22 +16,68 @@ async function fetchWeather(lat, lon) {
   }
 }
 
-
 function displayWeather(data) {
-  const weatherDiv = document.getElementById("weather-data");
-  const timeseries = data.properties.timeseries;
+    const weatherDiv = document.getElementById("weather-data");
+    const timeseries = data.properties.timeseries;
+  
+    if (timeseries && timeseries.length > 0) {
+      const forecast = timeseries[0].data.instant.details;
+  
+      function getWeatherIcon(symbolCode) {
+        const weatherIcons = {
+          clear_day: "☀️",
+          clear_night: "🌙",
+          partly_cloudy_day: "🌤️",
+          partly_cloudy_night: "🌙☁️",
+          cloudy: "🌥️",
+          rain: "🌧️",
+          rain_showers_day: "🌦️",
+          rain_showers_night: "🌧️🌙",
+          snow: "🌨️",
+          snow_showers_day: "🌨️",
+          snow_showers_night: "🌨️🌙",
+          thunderstorm: "⛈️",
+          sleet: "🌨️🌧️",
+          fog: "🌫️",
+        };
+  
+        return weatherIcons[symbolCode] || "❓";
+      }
 
-  if (timeseries && timeseries.length > 0) {
-    const forecast = timeseries[0].data.instant.details;
-    weatherDiv.innerHTML = `
-      <p><strong>Temperature:</strong> ${forecast.air_temperature} °C</p>
-      <p><strong>Wind Speed:</strong> ${forecast.wind_speed} m/s</p>
-      <p><strong>Humidity:</strong> ${forecast.relative_humidity} %</p>
-    `;
-  } else {
-    weatherDiv.textContent = "No weather data available.";
+      function getWeatherDescription(symbolCode) {
+        const weatherDescriptions = {
+          clear_day: "Clear sky",
+          clear_night: "Clear sky",
+          partly_cloudy_day: "Partly cloudy",
+          partly_cloudy_night: "Partly cloudy",
+          cloudy: "Cloudy",
+          rain: "Rain",
+          rain_showers_day: "Rain showers",
+          rain_showers_night: "Rain showers",
+          snow: "Snow",
+          snow_showers_day: "Snow showers",
+          snow_showers_night: "Snow showers",
+          thunderstorm: "Thunderstorm",
+          sleet: "Sleet",
+          fog: "Fog",
+        };
+      
+        return weatherDescriptions[symbolCode] || "Unknown weather condition";
+      }
+  
+      const nextHourForecast = timeseries[0].data.next_1_hours?.summary?.symbol_code || "N/A";
+      const weatherIcon = getWeatherIcon(nextHourForecast);
+      const weatherDescription = getWeatherDescription(nextHourForecast);
+  
+      weatherDiv.innerHTML = `
+        <p id="weatherIcon">${weatherIcon}</p>
+        <p id="weather"><strong>${weatherDescription}</strong></p>
+        <p id="temp">${forecast.air_temperature} °C</p>
+        <p><strong>Wind Speed</strong><br> ${forecast.wind_speed} m/s</p>
+        <p><strong>Humidity</strong><br> ${forecast.relative_humidity} %</p>`;
+    } else {
+      weatherDiv.textContent = "No weather data available.";
+    }
   }
-}
 
-
-fetchWeather(59.91, 10.75);
+fetchWeather(59.19, 17.83);
