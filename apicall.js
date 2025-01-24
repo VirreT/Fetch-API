@@ -39,6 +39,9 @@ function displayWeather(data) {
           thunderstorm: "⛈️",
           sleet: "🌨️🌧️",
           fog: "🌫️",
+          fair_night: "🌙☁️",
+          fair_day: "🌤️",
+          lightrain: "🌧️",
         };
   
         return weatherIcons[symbolCode] || "❓";
@@ -60,6 +63,9 @@ function displayWeather(data) {
           thunderstorm: "Thunderstorm",
           sleet: "Sleet",
           fog: "Fog",
+          fair_night: "Fair",
+          fair_day: "Fair",
+          lightrain: "Light rain"
         };
       
         return weatherDescriptions[symbolCode] || "Unknown weather condition";
